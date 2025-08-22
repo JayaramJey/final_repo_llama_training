@@ -22,6 +22,8 @@ This project fine-tunes a pretrained multi label text classification model to de
         - Downloads the required data files to train and test the model
     - custom_head.py
         - Custom classification head that is used on the model for handling multi label classification outputs
+    - metrics.py
+        - calculates evaluation metrics such as f1 score
 - config.yaml
     - A file which allows you to change multiple settings in training such as learning rate, training mode, ect... whithout the need to edit the code.
 - requirements.txt
@@ -29,7 +31,7 @@ This project fine-tunes a pretrained multi label text classification model to de
 # Steps for training and use
 ### Set up instructions
 - Clone the repository
-    - git remote add origin https://github.com/JayaramJey/llama_model_training.git
+    - https://github.com/JayaramJey/final_repo_llama_training/tree/main
 - Set up a virtual environment using the following prompt (or any other environment type you want to use)
     - `conda create -n emotion-classifier`
 - cd to the src file
