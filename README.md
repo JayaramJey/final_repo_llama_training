@@ -106,6 +106,6 @@ model.eval()
 - Training is done using BCEWithLogitsLoss
 - Weights are assigned to different labels to deal with the imbalance in the training data
 - The config.yaml stores all the training parameters including the different training options:
-    - Partial freeze: Only keep a few layers unfrozen
-    - Full freeze: Keep everything frozen and only train the classifier head
-    - Fine tuning: Train every layer
+    - partial: Only keep a few layers unfrozen
+    - freeze: Keep everything frozen and only train the classifier head
+    - full: Train every layer
