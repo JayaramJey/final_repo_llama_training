@@ -1,6 +1,6 @@
 import torch
 from transformers import AutoModelForCausalLM
-from custom_head import FrozenLlamaClassifier
+from custom_head import CustomLlamaClassifier
 
 def load_base_model(config, pos_weight=None):
     # obtain required variables from config file
@@ -32,13 +32,13 @@ def load_base_model(config, pos_weight=None):
                 for param in layer.parameters():
                     param.requires_grad = True
 
-        classifier = FrozenLlamaClassifier(
+        classifier = CustomLlamaClassifier(
             base_model, 
             pos_weight=pos_weight,
         )
 
     elif train_type == "full":
-        classifier = FrozenLlamaClassifier(
+        classifier = CustomLlamaClassifier(
             base_model, 
             pos_weight=pos_weight,
         )
@@ -46,7 +46,7 @@ def load_base_model(config, pos_weight=None):
     else:  
         for param in base_model.parameters():
                 param.requires_grad = False
-        classifier = FrozenLlamaClassifier(
+        classifier = CustomLlamaClassifier(
             base_model, 
             num_labels=num_labels, 
             pos_weight=pos_weight,

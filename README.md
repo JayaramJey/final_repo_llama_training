@@ -13,7 +13,7 @@ This project fine-tunes a pretrained multi label text classification model to de
         - Loads the dataset from the CSV file
         - Data labels are put into one array
         - Text is tokenized
-        - Three different training types available (Partial, FUll freeze, fine tune)
+        - Three different training types available (partial, freeze, full)
         - Weights are determined and applied based on training data balance
     - main.py
         - A custom head is applied to the model (Currently using BERT)
@@ -31,7 +31,7 @@ This project fine-tunes a pretrained multi label text classification model to de
 # Steps for training and use
 ### Set up instructions
 - Clone the repository
-    - https://github.com/JayaramJey/final_repo_llama_training/tree/main
+    - git clone https://github.com/JayaramJey/final_repo_llama_training.git
 - Set up a virtual environment using the following prompt (or any other environment type you want to use)
     - `conda create -n emotion-classifier`
 - cd to the src file
@@ -63,8 +63,8 @@ This project fine-tunes a pretrained multi label text classification model to de
 
 ```
 import torch
-from transformers import AutoTokenizer, AutoModel
-from custom_head import CustomLlamaClassifier  # or whatever your model class is called
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from custom_head import CustomLlamaClassifier 
 import yaml
 
 with open("../config.yaml", "r") as f:

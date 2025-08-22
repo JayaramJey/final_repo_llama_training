@@ -9,7 +9,7 @@ from transformers.modeling_outputs import SequenceClassifierOutput
         config = yaml.safe_load(f)
 
 # Define a custom classifier that wraps a frozen LLaMA model
-class FrozenLlamaClassifier(nn.Module):
+class CustomLlamaClassifier(nn.Module):
     def __init__(self, base_model, pos_weight=None):
         super().__init__()  # Initialize the parent nn.Module class
 
