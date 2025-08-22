@@ -42,7 +42,10 @@ This project fine-tunes a pretrained multi label text classification model to de
     - `wandb login`
 - download the required datafiles by using the following command line but only run once
     - `python download.py`
-
+- request access for the llama model from the following link
+    - https://huggingface.co/meta-llama/Llama-3.2-3B
+- Create a read access token from your hugging face account and use the following command to apply it 
+    - `huggingface-cli login`
 ### Current issues
 - f1 scores output all result in 0
 - eval_loss and grad_norm output nan
@@ -83,10 +86,17 @@ model.load_state_dict(torch.load("custom_llama_classifier_weights.pth", map_loca
 
 # Load tokenizer
 tokenizer = AutoTokenizer.from_pretrained(model_name)
+if tokenizer.pad_token is None:
+    tokenizer.pad_token = tokenizer.eos_token
 
 model.to(device)
 model.eval()
 ```
+
+# Using a different model
+- Most llama-3.2-#B models will work with this code (e.g llama-3.2-1B)
+    - just need to change the model name within the config file
+- Large models such as openai/gpt-oss-20b will not work due to the size of the model being too large
 
 # How everything works
 - llama-3.2-3B is used as the base model
